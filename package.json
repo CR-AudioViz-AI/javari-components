@@ -8,7 +8,12 @@
     "build": "tsc",
     "prepublishOnly": "npm run build"
   },
-  "keywords": ["javari", "ai", "widget", "chat"],
+  "keywords": [
+    "javari",
+    "ai",
+    "widget",
+    "chat"
+  ],
   "author": "CR AudioViz AI, LLC",
   "license": "PROPRIETARY",
   "peerDependencies": {
