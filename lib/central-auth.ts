@@ -19,7 +19,18 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://kteobfyfer
 const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 // Create single shared Supabase client
-export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Lazy singleton — prevents build-time crash when env vars are absent
+let _supabase: ReturnType<typeof createClient> | null = null;
+function _getClient() {
+  if (!_supabase) _supabase = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || SUPABASE_URL,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || SUPABASE_ANON_KEY
+  );
+  return _supabase;
+}
+export const supabase = new Proxy({} as ReturnType<typeof createClient>, {
+  get(_t, prop) { return (_getClient() as any)[prop as string]; }
+});
 
 // App identifier - set this in each app's env
 const APP_ID = process.env.NEXT_PUBLIC_APP_ID || 'unknown';
