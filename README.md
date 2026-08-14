@@ -9,14 +9,14 @@ Per **Henderson Standard**: Every app MUST use these centralized components.
 ```bash
 npm install @craudiovizai/components
 # or use directly from GitHub
-npm install github:CR-AudioViz-AI/crav-components
+npm install github:CR-AudioViz-AI/javari-components
 ```
 
 ## Components
 
 ### JavariChat - AI Assistant Embed
 ```tsx
-import { JavariChat } from 'crav-components';
+import { JavariChat } from 'javari-components';
 
 // In your app layout
 <JavariChat 
@@ -29,7 +29,7 @@ import { JavariChat } from 'crav-components';
 
 ### CrossSell - Product Recommendations
 ```tsx
-import { CrossSell } from 'crav-components';
+import { CrossSell } from 'javari-components';
 
 // Anywhere in your app
 <CrossSell 
@@ -43,7 +43,7 @@ import { CrossSell } from 'crav-components';
 
 ### Authentication
 ```tsx
-import { signIn, signUp, signOut, getSession } from 'crav-components';
+import { signIn, signUp, signOut, getSession } from 'javari-components';
 
 // Sign in
 const { data, error } = await signIn(email, password);
@@ -54,7 +54,7 @@ const session = await getSession();
 
 ### Payments
 ```tsx
-import { createCheckout, getCreditsBalance, spendCredits } from 'crav-components';
+import { createCheckout, getCreditsBalance, spendCredits } from 'javari-components';
 
 // Create Stripe checkout
 const { url } = await createCheckout({ priceId: 'price_xxx' });
@@ -65,7 +65,7 @@ const balance = await getCreditsBalance(userId);
 
 ### Error Handling
 ```tsx
-import { reportError, setupGlobalErrorHandler } from 'crav-components';
+import { reportError, setupGlobalErrorHandler } from 'javari-components';
 
 // Setup once in your app
 setupGlobalErrorHandler();
@@ -80,7 +80,7 @@ try {
 
 ### Activity Logging
 ```tsx
-import { logActivity } from 'crav-components';
+import { logActivity } from 'javari-components';
 
 // Log any action
 await logActivity('page_view', { page: '/dashboard' });

@@ -4,7 +4,7 @@
  * This library provides ALL shared components per Henderson Standard.
  * Import from here to ensure consistency across apps.
  * 
- * @package crav-components
+ * @package javari-components
  * @version 1.0.0
  */
 
@@ -19,4 +19,4 @@ export * from './lib/central-ops';
 export * from './lib/error-handler';
 
 // Usage Example:
-// import { JavariChat, CrossSell, signIn, createCheckout, reportError } from 'crav-components';
+// import { JavariChat, CrossSell, signIn, createCheckout, reportError } from 'javari-components';

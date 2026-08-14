@@ -41,7 +41,7 @@ const PRODUCTS: Product[] = [
     name: 'Market Oracle',
     description: 'AI-powered stock analysis and predictions',
     icon: '📈',
-    url: 'https://crav-market-oracle.vercel.app',
+    url: 'https://craudiovizai.com/apps/market-oracle',
     category: 'finance',
     tags: ['stocks', 'investing', 'ai', 'analysis'],
     rating: 4.8
@@ -51,7 +51,7 @@ const PRODUCTS: Product[] = [
     name: 'PDF Builder Pro',
     description: 'Create professional PDFs in seconds',
     icon: '📄',
-    url: 'https://crav-pdf-builder.vercel.app',
+    url: 'https://craudiovizai.com/apps/pdf-builder',
     category: 'productivity',
     tags: ['pdf', 'documents', 'business'],
     rating: 4.7,
@@ -62,7 +62,7 @@ const PRODUCTS: Product[] = [
     name: 'Invoice Generator',
     description: 'Professional invoices for your business',
     icon: '💰',
-    url: 'https://crav-invoice-generator.vercel.app',
+    url: 'https://craudiovizai.com/apps/invoice-generator',
     category: 'business',
     tags: ['invoices', 'business', 'billing'],
     rating: 4.8
@@ -72,7 +72,7 @@ const PRODUCTS: Product[] = [
     name: 'Logo Studio',
     description: 'AI-powered logo design in minutes',
     icon: '🎨',
-    url: 'https://crav-logo-studio.vercel.app',
+    url: 'https://javarilogo.com/brand',
     category: 'design',
     tags: ['logo', 'design', 'branding', 'ai']
   },
@@ -81,7 +81,7 @@ const PRODUCTS: Product[] = [
     name: 'Social Graphics',
     description: 'Stunning social media visuals',
     icon: '📱',
-    url: 'https://crav-social-graphics.vercel.app',
+    url: 'https://craudiovizai.com/apps/social-graphics',
     category: 'marketing',
     tags: ['social', 'marketing', 'graphics']
   },
@@ -90,7 +90,7 @@ const PRODUCTS: Product[] = [
     name: 'eBook Creator',
     description: 'Write and publish eBooks easily',
     icon: '📚',
-    url: 'https://crav-ebook-creator.vercel.app',
+    url: 'https://craudiovizai.com/apps/ebook-creator',
     category: 'publishing',
     tags: ['ebook', 'writing', 'publishing']
   },
@@ -99,16 +99,16 @@ const PRODUCTS: Product[] = [
     name: 'Digital Scrapbook',
     description: 'Beautiful memory keeping',
     icon: '🖼️',
-    url: 'https://crav-scrapbook.vercel.app',
+    url: 'https://javari-scrapbook.vercel.app',
     category: 'creative',
     tags: ['photos', 'memories', 'creative']
   },
   {
-    id: 'cravbarrels',
-    name: 'CravBarrels',
+    id: 'javarispirits',
+    name: 'Javari Spirits',
     description: 'Track your bourbon collection',
     icon: '🥃',
-    url: 'https://cravbarrels.com',
+    url: 'https://javarispirits.com',
     category: 'lifestyle',
     tags: ['bourbon', 'whiskey', 'collection']
   },
@@ -117,7 +117,7 @@ const PRODUCTS: Product[] = [
     name: 'CardVerse',
     description: 'Trading card marketplace',
     icon: '🃏',
-    url: 'https://cravcards.com',
+    url: 'https://javaricards.com',
     category: 'marketplace',
     tags: ['cards', 'trading', 'collectibles']
   },
@@ -132,10 +132,10 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'games',
-    name: 'CravGames Hub',
+    name: 'Javari Games',
     description: '1,200+ free games to play',
     icon: '🎮',
-    url: 'https://cravgameshub.com',
+    url: 'https://javarigames.com',
     category: 'entertainment',
     tags: ['games', 'free', 'entertainment'],
     isFree: true
