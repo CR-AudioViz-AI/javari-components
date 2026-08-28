@@ -13,18 +13,19 @@
  */
 
 import { createClient } from '@supabase/supabase-js';
+import { publishableKey, supabaseUrl } from "@craudioviz/platform-sdk";
 
 // Central Supabase instance - ALL apps connect here
-const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://kteobfyferrukqeolofj.supabase.co';
-const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+const SUPABASE_URL = supabaseUrl();
+const SUPABASE_ANON_KEY = publishableKey();
 
 // Create single shared Supabase client
 // Lazy singleton — prevents build-time crash when env vars are absent
 let _supabase: ReturnType<typeof createClient> | null = null;
 function _getClient() {
   if (!_supabase) _supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL || SUPABASE_URL,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || SUPABASE_ANON_KEY
+    supabaseUrl() || SUPABASE_URL,
+    publishableKey() || SUPABASE_ANON_KEY
   );
   return _supabase;
 }
