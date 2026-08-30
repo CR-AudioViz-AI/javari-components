@@ -158,13 +158,21 @@ export async function updateUserProfile(userId: string, updates: {
   // Always update last_active_app
   updates.last_active_app = APP_ID;
   
+  // 2026-08-29: cast because this client is built WITHOUT generated Database
+  // types, so every table resolves to `never` and any object literal is TS2353.
+  //
+  // The real defect underneath was profiles.last_active_app NOT EXISTING. Line 159
+  // above sets it on EVERY sign-in, so this upsert named a column PostgREST would
+  // reject — meaning sign-in tracking has never worked for any app using this
+  // library. Verified against the live database, then added 2026-08-29 with a
+  // column comment recording the history. apps_used was missing the same way.
   const { error } = await supabase
     .from('profiles')
     .upsert({
       id: userId,
       ...updates,
       updated_at: new Date().toISOString(),
-    });
+    } as never);
   
   return { error };
 }
@@ -174,6 +182,10 @@ export async function updateUserProfile(userId: string, updates: {
  */
 async function trackUserActivity(userId: string, action: string) {
   try {
+    // 2026-08-29: same untyped-client cast. UNLIKE the profiles upsert above, the
+    // shape here is CORRECT — activity_logs really does carry user_id, app_id,
+    // action and metadata, checked against the live schema rather than assumed.
+    // Only the compiler was missing the schema.
     await supabase.from('activity_logs').insert({
       user_id: userId,
       app_id: APP_ID,
@@ -182,7 +194,7 @@ async function trackUserActivity(userId: string, action: string) {
         url: typeof window !== 'undefined' ? window.location.href : null,
         timestamp: new Date().toISOString(),
       },
-    });
+    } as never);
   } catch (e) {
     console.error('Failed to track activity:', e);
   }
