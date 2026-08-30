@@ -50,7 +50,17 @@ export function BrandedHeader({ appName, appLogo, quickLinks = [] }: BrandedHead
         const creditsResult = await CentralServices.Credits.getBalance();
         if (creditsResult.success) {
           setCredits(creditsResult.data?.balance || 0);
-          setPlan(creditsResult.data?.plan || 'free');
+          // 2026-08-29: `tier`, not `plan`. CentralCredits.getBalance() is typed
+          // Promise<CentralResponse<{ balance: number; tier: string }>> — there has
+          // never been a `plan` field, so this line always produced undefined and
+          // the header always showed 'free', including to paying customers.
+          //
+          // The cast is guarded rather than blind: tier is `string` on the wire, and
+          // setPlan only accepts 'free' | 'pro' | 'business'. An unrecognised tier
+          // falls back to 'free' instead of being asserted into a union it does not
+          // belong to — the same guarded shape used in the other forked headers.
+          const tier = creditsResult.data?.tier;
+          setPlan(tier === 'pro' || tier === 'business' ? tier : 'free');
         }
       }
     } catch (error) {
