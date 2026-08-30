@@ -131,13 +131,25 @@ export async function updateUserProfile(userId: string, updates: {
 }) {
   // Add current app to apps_used if not already there
   if (updates.apps_used === undefined) {
+    // 2026-08-29: the result is annotated because this Supabase client is created
+    // WITHOUT generated Database types, so every .select() resolves to `never` and
+    // any property access on it is TS2339. That is a typing gap, not a data one.
+    //
+    // The data gap was real and separate: profiles.apps_used DID NOT EXIST. This
+    // code has read and written it since it was written — the read returned nothing
+    // and the write would have been rejected by PostgREST. The column was added on
+    // 2026-08-29 with a comment recording that.
+    //
+    // Found only because this repo had no tsconfig.json at all, so its 22
+    // TypeScript files had NEVER been checked. It reported zero errors, which reads
+    // as clean and meant the opposite.
     const { data: profile } = await supabase
       .from('profiles')
       .select('apps_used')
       .eq('id', userId)
-      .single();
-    
-    const currentApps = profile?.apps_used || [];
+      .single<{ apps_used: string[] | null }>();
+
+    const currentApps = profile?.apps_used ?? [];
     if (!currentApps.includes(APP_ID)) {
       updates.apps_used = [...currentApps, APP_ID];
     }
