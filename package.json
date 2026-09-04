@@ -29,7 +29,7 @@
   "dependencies": {
     "@craudioviz/platform-sdk": "git+https://github.com/CR-AudioViz-AI/platform-sdk.git",
     "lucide-react": "^0.577.0",
-    "next": "^15.5.21",
+    "next": "^16.3.4",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   }
